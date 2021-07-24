@@ -1,3 +1,3 @@
-module Hello-World-Udemy/m/v2
+module github.com/Ashwani00002/go-course
 
 go 1.16
