@@ -3,23 +3,29 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"text/template"
 )
 
-const portNumber = ":8090"
+const portNumber = ":8080"
 
 // Home is home page handler
 func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "This is home page")
+	renderTemplate(w, "home.page.tmpl")
 }
 
 // About is about page handler
 func About(w http.ResponseWriter, r *http.Request) {
-	sum := addValues(2, 2)
-	fmt.Fprintf(w, fmt.Sprintf("This is the about page handler & sum of 2 + 2 is : %d ", sum))
+	renderTemplate(w, "about.page.tmpl")
 }
 
-func addValues(x, y int) int {
-	return x + y
+func renderTemplate(w http.ResponseWriter, tmpl string) {
+	parsedTemplate, _ := template.ParseFiles("./templates/" + tmpl)
+	err := parsedTemplate.Execute(w, nil)
+	if err != nil {
+		fmt.Println("error parsing template", err)
+		return
+	}
+
 }
 
 func main() {
@@ -27,5 +33,5 @@ func main() {
 	http.HandleFunc("/about", About)
 
 	fmt.Println(fmt.Sprintf("Starting application on port %s", portNumber))
-	http.ListenAndServe(portNumber, nil)
+	_ = http.ListenAndServe(portNumber, nil)
 }
