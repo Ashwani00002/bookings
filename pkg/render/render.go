@@ -48,13 +48,12 @@ func RenderTemplateTest(w http.ResponseWriter) (map[string]*template.Template, e
 		}
 
 		if len(matches) > 0 {
-			ts, err := ts.ParseGlob("./templates/*.layout.tmpl")
+			ts, err = ts.ParseGlob("./templates/*.layout.tmpl")
 			if err != nil {
-				return myCache, err
+				return myCache, nil
 			}
 		}
 		myCache[name] = ts
-
 	}
 	return myCache, nil
 }
