@@ -13,7 +13,9 @@ import (
 const portNumber = ":8080"
 
 func main() {
+	
 	var app config.Appconfig
+
 	tc, err := render.CreateTemplateCache()
 	if err != nil {
 		log.Fatal(err)
