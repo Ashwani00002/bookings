@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/Ashwani00002/go-course/pkg/config"
+	"github.com/Ashwani00002/go-course/pkg/models"
 )
 
 var functions = template.FuncMap{}
@@ -20,7 +21,7 @@ func NewTemplate(a *config.Appconfig) {
 }
 
 // Render templates for handlers
-func RenderTemplate(w http.ResponseWriter, tmpl string) {
+func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
 
 	// get template cache from app config
 	var tc map[string]*template.Template
