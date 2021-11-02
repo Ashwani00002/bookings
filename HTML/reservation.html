@@ -66,7 +66,26 @@
 
         <div class="container">
             <div class="row">
-                <h1>This will be reservation page</h1>
+                <h1 class="mt-5">Search for Availability</h1>
+                <form action="reservation.html" method="get">
+                  <div class="mb-3">
+                    <label for="start_id" class="form-label">Starting Date</label>
+                    <input type="date" class="form-control" id="start_id" name="start_id" aria-describedby="startDateHelp">
+                    <div id="startDateHelp" class="form-text">Enter your starting date in YYYY-MM-DD.</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="end_id" class="form-label">Ending Date</label>
+                    <input type="date" class="form-control" id="end_id" name="end_id" aria-describedby="endDateHelp">
+                    <div id="endDateHelp" class="form-text">Enter your ending date in YYYY-MM-DD.</div>
+                  </div>
+                 
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
         </div>
 
